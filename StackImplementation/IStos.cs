@@ -1,4 +1,6 @@
-﻿namespace Stos
+﻿using System.Collections.Generic;
+
+namespace Stos
 {
     /// <summary>
     /// Interfejs stosu (generyczny)
@@ -13,7 +15,7 @@
     /// Stos można przeglądać bez możliwości zmiany elementów (read-only)
     /// </remarks>
     /// <typeparam name="T">dowolny typ wartościowy lub referencyjny</typeparam>
-    public interface IStos<T>
+    public interface IStos<T> : IEnumerable<T>
     {
         //w interfejsie nie deklaruje się konstruktora
 
@@ -37,5 +39,10 @@
 
         //kopiuje i eksportuje stos do tablicy
         T[] ToArray();
+
+        // TODO indekser - przeciążenie operatora []
+        T this[int index] { get; } //read-only
+
+        
     }
 }
